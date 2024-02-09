@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Insurance Services | DTS Insurance Services
+{% endblock title %}
+
+
+{% block content %}
+<div class="container px-2 mb-5">
+    <div class="row">
+        <div class="col-sm-10 mx-auto">
+
+            <div class="container mt-5 mx-auto">
+                <h1>Our Insurance Services</h1>
+                <p class="text-justify">At Our Insurance Company, we take immense pride in providing a diverse range of
+                    insurance services, each meticulously designed to safeguard what matters most to you. Our commitment
+                    to delivering personalized coverage and exceptional service sets us apart in the industry, ensuring
+                    that our clients feel secure and well-protected. Explore our key insurance offerings:</p>
+
+               
+                <div class="sub-items ">
+                    <h3>1. Commercial Auto Insurance</h3>
+                    <p class="text-justify">DTS Commercial Auto Insurance is your partner in business, offering specialized coverage designed to protect your fleet and ensure the success of your operations. Our comprehensive plans are tailored to meet the unique needs of your commercial vehicles, providing reliable protection on the road. Whether you operate a small business or manage a larger fleet, DTS is committed to safeguarding your valuable assets. Trust us to navigate the complexities of commercial auto insurance, allowing you to focus on achieving your business goals with confidence and peace of mind.</p>
+                    <a href="{% url "commercial-auto-form" %}" class="p-0 m-0">Know More <i class="fa fa-long-arrow-right" aria-hidden="true"></i> </a>
+                </div>
+
+                <div class="sub-items ">
+                    <h3>2. Non Commercial Auto Insurance</h3>
+                    <p class="text-justify">DTS Non-Commercial Auto Insurance is your key to personalized protection on the road. Our comprehensive plans are meticulously crafted to cater to your individual needs, ensuring reliable coverage for all your personal vehicles. From daily commuting to weekend getaways, our commitment is to provide you with peace of mind on every journey. With DTS, you can navigate the roads confidently, knowing that our flexible and thorough insurance solutions prioritize your safety, security, and well-being behind the wheel. Choose DTS Non-Commercial Auto Insurance for a reliable companion on the road, tailored just for you.</p>
+                    <a href="{% url "non-commercial-auto-form" %}" class="p-0 m-0">Know More <i class="fa fa-long-arrow-right" aria-hidden="true"></i> </a>
+                </div>
+
+                <div class="sub-items">
+                    <h3>3. Home Insurance</h3>
+                    <p class="text-justify">Your home is not just a physical space; it's a sanctuary, a place where memories
+                        are created and cherished. Our comprehensive home insurance policies are crafted to provide a robust
+                        protective shield for your haven. From the unforeseen challenges posed by natural disasters to the 
+                        unexpected setbacks of theft or liability issues, our coverage ensures that your dwelling and personal 
+                        belongings are safeguarded against potential risks. With your insurance company, you can find peace of
+                        mind knowing that your home is secure, allowing you to focus on creating lasting memories within its walls.</p>
+                    <a href="home-insurance-form" class="p-0 m-0">Know More <i class="fa fa-long-arrow-right" aria-hidden="true"></i> </a>
+                </div>
+
+                <div class="sub-items ">
+                    <h3>4. Life Insurance</h3>
+                    <p class="text-justify">Life is a journey full of uncertainties, and our life insurance solutions
+                        are
+                        here to provide a reliable financial safety net for your loved ones. At Your Insurance Company,
+                        we
+                        understand that your family's well-being is a top priority. Our experienced agents work closely
+                        with
+                        you to tailor life insurance plans that align with your unique goals and aspirations. From term
+                        life
+                        policies offering affordability and flexibility to whole life insurance providing lifelong
+                        coverage
+                        and potential investment opportunities, we empower you to secure your family's financial future.
+                        With our life insurance solutions, you can rest assured that your loved ones can continue to
+                        thrive,
+                        even in the face of life's unpredictable challenges.</p>
+                    <p class="text-justify">Discover the unparalleled difference in partnering with DTS Insurance
+                        Services.
+                        Our dedicated team is committed to providing more than just policies; we offer peace of mind and
+                        a
+                        profound sense of security. Get started today by requesting a personalized quote or reaching out
+                        to
+                        our experienced agents. Your protection is not just our priority; it's our unwavering
+                        commitment.
+                    </p>
+                    <a href="{% url "life-insurance-form" %}" class="p-0 m-0">Know More <i class="fa fa-long-arrow-right" aria-hidden="true"></i> </a>
+                </div>
+
+                <!-- Continue with additional services or closing sections as needed -->
+                <div class="sub-items ">
+                    <h2>Experience unmatched protection with DTS Insurance Services.</h2>
+                    <p class="text-justify">Discover a new standard of assurance with DTS Insurance Services, where your
+                        safety and peace of mind are our top priorities. Our comprehensive range of insurance services,
+                        including home, auto, and life coverage, is meticulously crafted to provide you with unmatched
+                        protection. With a commitment to personalized service and unwavering integrity, we go beyond the
+                        conventional, ensuring that you not only receive policies but a partnership dedicated to
+                        safeguarding what matters most to you. Trust in us to navigate life's uncertainties, offering
+                        you
+                        the confidence to embrace every moment. Partner with DTS Insurance Services today, where your
+                        protection is our passion.</p>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

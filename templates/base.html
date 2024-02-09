@@ -1,0 +1,209 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>
+         {% block title %}  {% endblock title %}
+    </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="DTS Insurance Services Inc., DTS, Truck insurance, life insurance, home insurance, California insurance" name="keywords">
+    <meta name="description" content="Discover comprehensive insurance solutions at Your Insurance Company. We specialize in affordable home, auto, and life insurance, ensuring personalized coverage for your unique needs. Trusted since [Year of establishment], our experienced agents prioritize your peace of mind. Get a quote today for reliable protection in California.">
+
+
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+    <!-- Fonts -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"  crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Flaticon Font -->
+    <link href="{% static 'lib/flaticon/font/flaticon.css' %}" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/custom_style.css' %} " rel="stylesheet">
+    <link href="{% static 'css/style.css' %} " rel="stylesheet">
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-dark py-1">
+        <div class="container pl-0">
+                    <div class="contact-container d-flex flex-wrap   mb-0">
+                        <p class="text-white px-1 text-center mb-0 py-0 " ><i class="fa fa-phone-alt mr-2"></i>{{ company_info.company_phone_number }}  </p>
+                        <p  class="text-white px-1 mb-0 py-0 " ><i class="fa fa-envelope mr-2"></i>{{ company_info.company_email_id }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+
+        <!-- Navbar Start -->
+    <div class="container-fluid position-relative shadow px-0">
+        <div class="container px-0 cont-nav " >
+            <nav class="navbar navbar-expand-lg bg-white navbar-dark ">
+                <a href="/" class="navbar-brand" >
+                    <img src="{% static 'img/logo1.png'%}" class="img-fluid logo " width="106px" alt="DTS insurance Services">
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between px-0" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto py-0">
+                        <a href="/" class="nav-item nav-link active">HOME</a>
+                        <a href="{% url 'about' %}" class="nav-item nav-link">ABOUT</a>
+
+                        <div class="nav-item dropdown services-link">
+                            <a href="#services"  class="nav-link dropdown-toggle" data-toggle="dropdown">SERVICES</a>
+                            <div class="dropdown-menu rounded-0 m-0">
+                                <a href="commercial-auto-form" class="dropdown-item">COMMERCIAL AUTO INSURANCE</a>
+                                <a href="{% url 'non-commercial-auto-form' %}" class="dropdown-item">NON COMMERCIAL AUTO INSURANCE</a>
+                                <a href="{% url 'home-insurance-form' %}" class="dropdown-item">HOME INSURANCE</a>
+                                <a href="{% url 'life-insurance-form' %}" class="dropdown-item">LIFE INSURANCE</a>
+                            </div>
+                        </div>
+
+                        <a href="{% url 'contact' %}" class="nav-item nav-link">CONTACT</a>
+
+                        <div class="nav-item main-btn ">
+                            <a href="{% url 'free-quote' %}" class=" text-white highlight mx-0 ">GET FREE QUOTE</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+
+    {% block content %}
+
+    {% endblock content %}
+
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-white pt-5 px-sm-3 px-md-5">
+        <div class="container">
+        <div class="row  justify-content-between">
+            <div class="col-lg-4 col-md-6 footer">
+                <h4 class="text-white mb-2">GET IN TOUCH</h4>
+                <p class="info-footer"><i class="fa fa-map-marker-alt mr-2 mb-0  "></i>{{ company_info.company_address }}</p>
+                <p class=" px-2">{{company_info.zip_code}}</p>
+
+                <p class="info-footer"><i class="fa fa-phone-alt mr-2 "></i>{{ company_info.company_phone_number }}</p>
+                {% if company_info.company_phone_number2 %}
+                <p class="info-footer"><i class="fa fa-phone-alt mr-2"></i>{{ company_info.company_phone_number2 }}</p>
+                {% endif %}
+                {% if company_info.company_phone_number3 %}
+                <p  class="info-footer"><i class="fa fa-phone-alt mr-2"></i>{{ company_info.company_phone_number3 }}</p>
+                {% endif %}
+
+                <p><i class="fa fa-envelope mr-2 p-0 mt-0"></i>{{ company_info.company_email_id }}</p>
+            </div>
+            <div class="col-lg-3 col-md-6 ">
+                <h4 class="text-white mb-2">QUICK LINKS</h4>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-white mb-2" href="/"><i class="fa fa-angle-right mr-2"></i>HOME</a>
+                    <a class="text-white mb-2" href="about"><i class="fa fa-angle-right mr-2"></i>ABOUT US</a>
+                    <a class="text-white mb-2" href="insurance-services"><i class="fa fa-angle-right mr-2"></i>OUR SERVICES</a>
+                    {% comment %} <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our Projects</a> {% endcomment %}
+                    <a class="text-white" href="contact"><i class="fa fa-angle-right mr-2"></i>CONTACT US</a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 my-2">
+                <h4 class="text-white mb-2">GET FREE QUOTE</h4>
+                <form action="">
+                    <div class="form-group">
+                        <input type="text" class="form-control border-0" placeholder="Your Name" required="required" />
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control border-0" placeholder="Your Email" required="required" />
+                    </div>
+                    <div>
+                        <button class="btn btn-lg btn-primary btn-block border-0" type="submit">Submit Now</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+        <div class="container border-top border-secondary py-2">
+            <p class="m-0 text-center text-white">
+                &copy; <a class="text-white font-weight-bold" href="#">DTS INSURANCE SERVICES INC.</a>. All Rights Reserved. Developed by
+                <a class="text-white font-weight-bold" href="https://pisoftinformatics.com" target="_blank">Pisoft Informatics Pvt. Ltd</a>
+            </p>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="{% static 'js/jquery-3.7.1.js' %}"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %} "></script>
+    <script src="{% static 'lib/isotope/isotope.pkgd.min.js' %} "></script>
+    <script src="{% static '/lib/lightbox/js/lightbox.min.js' %}"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="{% static 'mail/jqBootstrapValidation.min.js' %}"></script>
+    <script src="{% static 'mail/contact.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'js/main.js' %}"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Remove the 'active' class from all nav items
+            $('.navbar-nav a').removeClass('active');
+
+            // Get the current URL path and remove the trailing slash
+            var pathname = window.location.pathname.replace(/^\/|\/$/g, '');
+
+            // Add the 'active' class to the nav item with the matching href attribute
+            $('.navbar-nav a').each(function () {
+                var href = $(this).attr('href').replace(/^\/|\/$/g, '');
+                if (pathname === href) {
+                    $(this).addClass('active');
+
+                    // If the clicked item is in the Services dropdown, add 'active' class to Services
+                    if ($(this).hasClass('dropdown-item')) {
+                        $('.navbar-nav .services-link').addClass('active');
+                    }
+                }
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
+

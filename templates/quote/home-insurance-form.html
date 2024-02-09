@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home Insurance | DTS Insurance Services
+{% endblock title %}
+
+{% block content %}
+<style>
+    input {
+        border: 1px solid rgb(149, 138, 223) !important;
+    }
+
+    .form-control {
+        border-radius: 5px;
+    }
+</style>
+
+
+<div class="container py-4  m-auto ">
+    <!---->
+
+    <h1 class="text-left">Home Insurance </h1>
+    <p class="para">
+         Your home is not just a physical space, it's a sanctuary. A place where memories are created and cherished. Our comprehensive home insurance policies are crafted to provide a robust protective shield for your haven. From the unforeseen challenges posed by natural disasters to the unexpected setbacks of theft or liability issues, our coverage ensures that your dwelling and personal belongings are safeguarded against potential risks. With your insurance company, you can find peace of mind knowing that your home is secure, allowing you to focus on creating lasting memories within its walls.
+    </p>
+
+
+    <!--<p class="para">-->
+    <!--     Home insurance is a fundamental safeguard for homeowners, offering protection against various perils that could-->
+    <!--    damage or destroy their property. Its primary purpose is to provide financial assistance in the event of-->
+    <!--    unforeseen circumstances such as natural disasters, theft, or accidents within the home.-->
+
+    <!--    Similar to auto insurance, home insurance comes in various forms, providing coverage for different aspects of-->
+    <!--    your property and personal belongings. This coverage typically includes:-->
+    <!--</p>-->
+    <!--<a href="#homeinsuranceform" class="btn btn-primary mt-0 mb-4">Buy Insurance Now</a>-->
+    <!--<p>-->
+    <!--    <span class="p-bold" style="font-weight: 500;"> DTS Insurance Services Inc.</span> will provide you with coverage, which refers to the maximum amount of money they will pay you in the event of a claim. It is advisable to inquire about the specific coverage provided by your policy from <span class="p-bold" style="font-weight: 500;"> DTS Insurance Services Inc.</span>.-->
+    <!--    <ul class="cauto-ul lists">-->
+    <!--        <li class="para">-->
+    <!--            <span class="li-head">Dwelling Coverage :</span> This aspect of home insurance protects the physical structure of your home itself, including walls, floors, roof, and built-in appliances, against damage from covered perils like fire, windstorms, or vandalism.-->
+    <!--        </li>-->
+    <!--        <li class="para">-->
+    <!--            <span class="li-head"> Personal Property Coverage: </span>Home insurance also covers your personal belongings, such as furniture, clothing, electronics, and other items, against theft, damage, or loss, whether inside your home or temporarily outside.-->
+
+    <!--        </li>-->
+    <!--        <li class="para">-->
+    <!--            <span class="li-head"> Liability Coverage: </span> Liability coverage is essential for protecting homeowners from legal claims and financial responsibility if someone is injured on their property or if their property causes damage to others. This coverage can help pay for medical bills, legal fees, and court settlements.  -->
+    <!--        </li>-->
+
+
+    <!--    </ul>-->
+    <!--</p>-->
+    <!--<p class="para">-->
+    <!--    Like auto insurance, home insurance premiums can be influenced by various factors including the value of your home, its location, the coverage options you choose, your claims history, and the deductible amount you select.-->
+    <!--</p>-->
+    <!--<p class="para">It's important to review your home insurance policy regularly to ensure that you have adequate coverage for your needs and that you understand any exclusions or limitations. Additionally, similar to auto insurance, if someone who is not listed on your policy experiences a loss on your property, it could impact your premiums. Therefore, it's crucial to consider the implications of lending your property to others or allowing non-residents to stay on your premises.</p>-->
+
+</div>
+
+
+<div class="container my-5 d-flex flex-column  justify-content-center align-items-center" id="homeinsuranceform">
+    <h1 class="h3 mb-3  col-md-7 text-center">
+        Get a Home Insurance Quote by Filling the following form
+    </h1>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p {% if message.tags %} role='alert' class="alert alert-success text-center {{ message.tags }} " {% endif %}> {{ message }} </p>
+        {% endfor %}
+    {% endif %}
+
+    <div class="col-lg-7">
+        <form class="form-container border border-4 border-primary shadow-lg" style="border-radius: 23px;"
+            method="post">
+            {% csrf_token %}
+            <div class="container d-flex flex-column p-4 my-2 ">
+                <div class="form-row">
+                    <div class="col-lg-12 text-center mb-4">
+                        <h3>
+                            Fill Up this Form
+                        </h3>
+                    </div>
+                    <div class="form-group col-md-6  ">
+                        <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name*" required >
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name*" required >
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+
+                        <input placeholder="DOB mm/dd/yyyy" name="dob" id="dob" required class="textbox-n form-control"
+                            th:field="*{category}" type="text" onfocus="(this.type='date')" onblur="(this.type='text')"
+                            id="date" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control" name="phone" id="phone"
+                            placeholder="Phone-number*" required>
+                    </div>
+                </div>
+                <div class="form-row">
+
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control" id="email" name="email"  placeholder="Email id*" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control" id="address" name="address"
+                            placeholder="Address*" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control" name="pincode" id="pincode" placeholder="Pin Code*"
+                            required>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control" name="houseno" id="houseno"
+                            placeholder="House Number/Flat Number*" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control" name="housearea" id="housearea"
+                            placeholder="house-area ex. 1200 sqft">
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control" id="pnumber" name="pnumber" placeholder="Policy Number">
+                    </div>
+                </div>
+
+
+
+                <div class="d-flex align-items-center justify-content-center ">
+                    <button type="submit" class="btn btn-primary m-2 ">Submit Now</button>
+                    <!-- <button type="reset" class="btn btn-danger ">Clear</button> -->
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

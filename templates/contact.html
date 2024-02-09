@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+About | DTS Insurance Services Inc.
+{% endblock title %}
+
+{% block content %}
+<style>
+    textarea, input{
+        border: 1px solid rgb(149, 138, 223) !important; 
+    }
+    .form-control{
+        border-radius: 5px;
+    }
+</style>
+
+    <!-- Contact Start -->
+    <div class="container-fluid bg-white my-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="d-flex flex-column justify-content-center bg-primary contact-banner my-5">
+                        <div class="d-inline-flex border border-light p-1 mb-4">
+                            <h4 class="h5 text-light  m-0  p-3">We look forward to hearing from you!</h4>
+                           
+                        </div>
+                        <div class="d-inline-flex border border-light p-4 mb-4">
+                            <h1 class="flaticon-office font-weight-normal text-light m-0 mr-3"></h1>
+                            <div class="d-flex flex-column">
+                                <h4 class="text-light">Our Office</h4>
+                                {% comment %} <p class="m-0 text-white">DTS Insurance Services Inc. <br> 3380 W Ashlan Ave
+                                    <br> FRESNO, CA</p>  {% endcomment %}
+                                    {% for data in sitedata %}
+                                <p class="m-0 text-white">{{data.company_address}}</p> 
+                                    {% endfor %}
+                            </div>
+                        </div>
+                        <div class="d-inline-flex border border-light p-4 mb-4">
+                            <h1 class="flaticon-email font-weight-normal text-light m-0 mr-3"></h1>
+                            <div class="d-flex flex-column">
+                                <h4 class="text-light">Email Us</h4>
+                                {% comment %} <p class="m-0 text-light">iqbal@dtsinsservices.com</p> {% endcomment %}
+                                
+                                {% for data in sitedata %}
+                                <p class="m-0 text-light">{{data.company_email_id}}</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="d-inline-flex border border-light p-4">
+                            <h1 class="flaticon-telephone font-weight-normal text-light m-0 mr-3"></h1>
+                            <div class="d-flex flex-column">
+                                <h4 class="text-light">Call Us</h4>
+                                
+                                {% for data in sitedata %}
+                                <p class="m-0 text-white"> {{data.company_phone_number}}</p>
+                                <p class="m-0 text-white"> {{data.company_phone_number2}}</p>
+                                {% comment %} <p class="m-0 text-white"> </p> {% endcomment %}
+                                <p class="m-0 text-white"> {{data.company_phone_number3}}</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 mb-5 my-lg-2 py-5 pl-lg-5">
+                    {% if messages %}
+                    {% for message in messages %}
+                    <p  {% if message.tags %} role='alert' class="alert alert-success text-center {{ message.tags }} " {% endif %}> {{ message }} </p>
+                    {% endfor %}
+                    {% endif %}
+                
+                <div class=" py-5">
+                    <h2 class=" h5 mb-4 text-center col-md-10 m-auto">
+                        Let DTS Insurance Services Inc. Handle All Of Your Insurance Needs!
+                    </h2>
+                    <form  method="post">
+                        {% csrf_token%}
+                        <div class="row m-auto">
+                            <div class="col-lg-8 m-auto">
+                                <input type="text" class="form-control m-3" placeholder="Full Name" name="name" id="name" required>
+                                <input type="text" class="form-control m-3" placeholder="Phone" name="phone" id="phone" required>
+                                <input type="text" class="form-control m-3" placeholder="Email" name="email" id="emial" required>
+                                <textarea name="msg"  class="form-control m-3" id="msg" cols="40" rows="5" placeholder="Message" required></textarea>
+
+                                <div class="d-flex align-items-center justify-content-content p-4">
+                                    <button type="submit" class="btn btn-primary m-auto">Submit Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+
+{% endblock content %}
