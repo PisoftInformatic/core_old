@@ -25,65 +25,7 @@ Life Insurance | DTS Insurance Services
     <p class="para ">
       Secure Your Legacy with DTS Life Insurance Inc. Life is unpredictable, but your legacy doesn't have to be. With DTS Life Insurance Inc., you can safeguard the financial future of your loved ones, ensuring that they're protected no matter what life throws their way. Our comprehensive plans offer peace of mind, providing a safety net that extends beyond the present moment.
     </p>
-    <!--<a href="#lifeinsuraceform" class="btn btn-primary mt-0 mb-4">Buy Insurance Now</a>-->
-    <!--<h3>Here are key points to understand about life insurance:</h3>-->
-    <!--<ul class="cauto-ul ">-->
-    <!--    <li class="para">-->
-    <!--        <span class="li-head" style="font-size: 18px;">1. Types of Life Insurance :</span> There are various types-->
-    <!--        of life insurance policies, but the two main categories are term life insurance and permanent life-->
-    <!--        insurance.-->
-    <!--        <ul class="subli">-->
-    <!--            <li><span class="li-head">Term Life Insurance: </span>This type of policy provides coverage for a-->
-    <!--                specific period, typically 10, 20, or 30 years. It offers a death benefit to your beneficiaries if-->
-    <!--                you pass away during the term of the policy. </li>-->
-    <!--            <li><span class="li-head">Permanent Life Insurance: </span>Permanent life insurance, such as whole life-->
-    <!--                or universal life insurance, provides coverage for your entire life as long as premiums are paid.-->
-    <!--                These policies also have a cash value component that grows over time and can be accessed during your-->
-    <!--                lifetime. </li>-->
-    <!--        </ul>-->
-    <!--    </li>-->
-    <!--    <li class="para">-->
-    <!--        <span class="li-head" style="font-size: 18px;">2. Purpose of Life Insurance</span> Life insurance serves-->
-    <!--        multiple purposes, including:-->
-    <!--        <ul class="subli">-->
-    <!--            <li><span class="li-head">Income Replacement: </span>The death benefit can replace lost income and-->
-    <!--                support your family's financial needs, such as mortgage payments, daily living expenses, and-->
-    <!--                education costs. </li>-->
-    <!--            <li><span class="li-head">Debt Repayment: </span>Life insurance can help settle outstanding debts, such-->
-    <!--                as loans, mortgages, or medical bills, preventing your loved ones from inheriting financial burdens.-->
-    <!--            </li>-->
-    <!--            <li><span class="li-head">Estate Planning: </span> It can be used as a tool for estate planning,-->
-    <!--                providing liquidity to pay estate taxes, ensuring the smooth transfer of assets, and preserving-->
-    <!--                wealth for future generations. </li>-->
-    <!--            <li><span class="li-head">Final Expenses: </span> Life insurance can cover funeral and burial expenses,-->
-    <!--                relieving your family of the financial burden during a difficult time. </li>-->
-    <!--        </ul>-->
-    <!--    </li>-->
-    <!--    <li class="para">-->
-    <!--        <span class="li-head" style="font-size: 18px;">3. Factors Affecting Premiums</span>The cost of life-->
-    <!--        insurance premiums is influenced by various factors, including:-->
-    <!--        <ul class="subli">-->
-    <!--            <li><span class="li-head">Age and Health: </span> Younger, healthier individuals typically pay lower-->
-    <!--                premiums because they pose a lower risk to the insurance company.</li>-->
-
-    <!--            <li><span class="li-head">Coverage Amount: </span>The death benefit amount affects the premium, with-->
-    <!--                higher coverage amounts resulting in higher premiums.</li>-->
-
-    <!--            <li><span class="li-head">Policy Type: </span> Permanent life insurance policies generally have higher-->
-    <!--                premiums compared to term life insurance due to the cash value component and lifetime coverage.</li>-->
-
-    <!--        </ul>-->
-    <!--    </li>-->
-    <!--    <li class="para ">-->
-    <!--        <span class="li-head" style="font-size: 18px;">4. Beneficiary Designation: </span>When purchasing a life-->
-    <!--        insurance policy, you'll need to designate one or more beneficiaries who will receive the death benefit upon-->
-    <!--        your passing. It's essential to regularly review and update your beneficiary designations to ensure they-->
-    <!--        align with your current wishes.-->
-    <!--    </li>-->
-
-    <!--</ul>-->
-    <!--<p class="para">Life insurance is a vital component of financial planning, providing peace of mind and financial protection for your loved ones in the event of your death. It's essential to carefully consider your needs, research available options, and consult with a qualified insurance professional to select the right policy that meets your objectives and budget.</p>-->
-</div>
+ </div>
 
 
 
@@ -100,77 +42,139 @@ Life Insurance | DTS Insurance Services
     {% endif %}
 
     <div class="col-lg-7">
-        <form class="form-container border border-4 border-primary shadow-lg" style="border-radius: 23px;"
-            method="post">
+        <form class="form-container border border-4 border-primary shadow-lg" style="border-radius: 23px;" method="post" onsubmit="return formvalid()">
             {% csrf_token %}
-            <div class="container d-flex flex-column p-4 my-2 ">
+            <div class="container d-flex flex-column p-4 my-2">
                 <div class="form-row">
                     <div class="col-lg-12 text-center mb-4">
-                        <h3>
-                            Fill Up this Form
-                        </h3>
-                    </div>
-                    <div class="form-group col-md-6  ">
-                        <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" required>
+                        <h3>Fill Up this Form</h3>
                     </div>
                     <div class="form-group col-md-6">
-                        <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name" required>
+                        <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" >
+                        <span id="fname-error" class="error-message"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name" >
+                        <span id="lname-error" class="error-message"></span>
                     </div>
                 </div>
-
+        
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        {% comment %} <input type="date" class="form-control" name="dob" id="dob" placeholder="dob"> {% endcomment %}
-                        <input placeholder="DOB mm/dd/yyyy"  required name="dob" id="dob" class="textbox-n form-control"
-                            th:field="*{category}" type="text" onfocus="(this.type='date')" onblur="(this.type='text')"
-                            id="date" />
+                        <input placeholder="DOB mm/dd/yyyy"  name="dob" id="dob" class="textbox-n form-control" th:field="*{category}" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" />
+                        <span id="dob-error" class="error-message"></span>
                     </div>
-
-                    <div class="form-group col-md-6 ">
-                        <div class="row">
-                            {% comment %} <div class="col-md-3 m-auto">
-                                <label for="gender">Gender </label>
-                            </div> {% endcomment %}
-                            <div class="col-md-12">
-                                <select class="col-md-12 form-control" required style="border: 1px solid rgb(149, 138, 223);" name="gender" id="gender">
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                </select>
-                            </div>
-                        </div>
-
-
+                    <div class="form-group col-md-6">
+                        <select class="col-md-12 form-control"  style="border: 1px solid rgb(149, 138, 223);" name="gender" id="gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                        <span class="error-message" id="gender-error">
                     </div>
-
-
                 </div>
-
-
+        
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <input type="text" class="form-control" name="phone" id="phone" required
-                            placeholder="Phone-number ex. 559-554-9835">
+                        <input type="text" class="form-control" name="phone" id="phone"  placeholder="Phone-number ex. 559-554-9835">
+                        <span id="phone-error" class="error-message"></span>
                     </div>
                     <div class="form-group col-md-6">
-                        <input type="text" class="form-control" id="email" name="email" placeholder="Email id" required>
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Email id" >
+                        <span id="email-error" class="error-message"></span>
                     </div>
-
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <textarea name="details" id="details" placeholder="Details" class="form-control border-b" rows="5"></textarea>
+                        <span id="details-error" class="error-message"></span>
                     </div>
                 </div>
-
-                <div class="d-flex align-items-center justify-content-center ">
-                    <button type="submit" class="btn btn-primary m-2 ">Submit Now</button>
-                    <!-- <button type="reset" class="btn btn-danger ">Clear</button> -->
-
+        
+                <div class="d-flex align-items-center justify-content-center">
+                    <button type="submit" class="btn btn-primary m-2">Submit Now</button>
                 </div>
             </div>
         </form>
+        
     </div>
 </div>
 
 
+<script>
+    function formvalid() {
+        var fname = document.getElementById('fname').value;
+        var lname = document.getElementById('lname').value;
+        var dob = document.getElementById('dob').value;
+        var phone = document.getElementById('phone').value;
+        var email = document.getElementById('email').value;
+        var gender = document.getElementById('gender').value;
+        var details = document.getElementById('details').value;
+       
+
+        // Clear previous error messages
+        var errorMessages = document.querySelectorAll('.error-message');
+        errorMessages.forEach(function(error) {
+            error.textContent = '';
+        });
+
+        // Validate First Name
+        if (fname.trim() === "") {
+            document.getElementById('fname-error').textContent = "First Name is required";
+            return false;
+        }
+        // Validate if First Name contains symbols
+        if (!/^[A-Za-z]+(?: [A-Za-z]+)*$/.test(fname.trim())) {
+            document.getElementById('fname-error').textContent = "First Name should contain only alphabets";
+            return false;
+        }
+        // Validate Last Name
+        if (lname.trim() === "") {
+            document.getElementById('lname-error').textContent = "Last Name is required";
+            return false;
+        }
+        if (dob.trim() === "") {
+            document.getElementById('dob-error').textContent = "Date Of Birth is Required";
+            return false;
+        }
+        if (gender.trim() === "") {
+            document.getElementById('gender-error').textContent = "Please choose gender";
+            return false;
+        }
+        if (phone.trim() === "") {
+            document.getElementById('phone-error').textContent = "Phone Number is Required";
+            return false;
+        }
+
+        // Regular expression to check if the phone number consists of 10 digits only
+        var phoneRegex = /^\d{10}$/;
+
+        if (!phoneRegex.test(phone.trim())) {
+            document.getElementById('phone-error').textContent = "Phone Number must be 10 digits and contain only numbers";
+            return false;
+        }
+
+        if (email.trim() === "") {
+            document.getElementById('email-error').textContent = "Email Address is Required";
+            return false;
+        }
+        if (details.trim() === "") {
+            document.getElementById('details-error').textContent = "Please Provide some details....";
+            return false;
+        }
+         // Split the details into words
+         var wordCount = details.trim().split(/\s+/).length;
+
+         // Validate minimum word count
+         if (wordCount < 10) {
+             document.getElementById('details-error').textContent = "Details must contain at least 10 words or enter details Properly.";
+             return false;
+         }
+       
+     
+       
+
+        return true; // Form submission allowed if all validations pass
+    }
+</script>
+ 
 {% endblock content %}
