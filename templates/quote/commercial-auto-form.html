@@ -33,6 +33,9 @@ Commercial Auto Insurance | DTS Insurance Services
     <div class=" mx-auto py-4">
         <h1 class="text-left ">Commercial Auto Insurance </h1>
         <p class="text-justify ">
+            Drive business success confidently with DTS Commercial Auto Insurance Inc., Our specialized coverage is meticulously crafted to meet the unique needs of your fleet, ensuring reliable protection on the road. At DTS, we understand the integral role your vehicles play in your business. Trust us to safeguard your valuable assets, allowing you to focus on the journey of achieving your company's goals and milestones without the burden of uncertainty.
+        </p>
+        {% comment %} <p class="text-justify ">
             Auto insurance is an essential safeguard that one must acquire when owning an auto or any other type of
             vehicle. Its purpose is to provide protection in the event of an accident. Auto insurance offers various
             forms of protection, such as covering the expenses for repairing your vehicle after an accident and
@@ -45,13 +48,13 @@ Commercial Auto Insurance | DTS Insurance Services
         <p class="text-justify">
             It is important to note that if an individual who is not listed on your policy has an accident with your
             auto, it may result in an increase in your own insurance premiums.
-        </p>
+        </p> {% endcomment %}
 
         <a href="#commercialautoform" class="btn btn-primary mt-2">Buy Insurance Now</a>
 
     </div>
 
-    <div class="cauto3">
+    {% comment %} <div class="cauto3">
         <h3>
             Auto Insurance Policy Coverage:
         </h3>
@@ -91,13 +94,13 @@ Commercial Auto Insurance | DTS Insurance Services
 
         </ul>
         </p>
-    </div>
+    </div> {% endcomment %}
 
 </div>
 
-
-<div class="container my-0  mb-5 d-flex flex-column  justify-content-center align-items-center" id="commercialautoform">
-    <h2 class=" my-3  text-center">
+<div id="formContainer">
+<div class="container my-0 d-flex flex-column justify-content-center align-items-center mb-5" id="commercialautoform">
+    <h2 class=" my-3 col-md-10 text-center">
         Get a Commercial Auto Insurance Quote by Filling the following form
     </h2>
 
@@ -204,7 +207,7 @@ Commercial Auto Insurance | DTS Insurance Services
 
     <!-- </div> -->
 </div>
-
+</div>
 <script>
     function formvalid() {
         var fname = document.getElementById('fname').value;

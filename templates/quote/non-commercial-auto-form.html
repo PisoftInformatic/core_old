@@ -20,6 +20,9 @@ Non Commercial Auto Insurance | DTS Insurance Services
     <div class=" mx-auto py-4">
         <h1 class="text-left ">Non Commercial Auto Insurance </h1>
         <p class="para ">
+            Embark on worry-free journeys with DTS Non-Commercial Auto Insurance. Our personalized plans cater to your individual needs, providing reliable protection for you and your vehicle. From daily commutes to weekend adventures, trust DTS to navigate the roads of life with you, ensuring peace of mind every mile of the way
+        </p>
+        {% comment %} <p class="para ">
             Auto insurance is an essential safeguard that one must acquire when owning an auto or any other type of
             vehicle. Its purpose is to provide protection in the event of an accident. Auto insurance offers various
             forms of protection, such as covering the expenses for repairing your vehicle after an accident and
@@ -32,14 +35,14 @@ Non Commercial Auto Insurance | DTS Insurance Services
         <p class="para">
             It is important to note that if an individual who is not listed on your policy has an accident with your
             auto, it may result in an increase in your own insurance premiums.
-        </p>
+        </p> {% endcomment %}
 
         <a href="#formContainer" class="btn btn-primary mt-2">Buy Insurance Now</a>
 
     </div>
 
    
-    <div class="cauto3">
+    {% comment %} <div class="cauto3">
         <h3>
             Auto Insurance Policy Coverage:
         </h3>
@@ -65,25 +68,29 @@ Non Commercial Auto Insurance | DTS Insurance Services
                
             </ul>
         </p>
-    </div>
+    </div> {% endcomment %}
 
 </div>
-
-
-
 
     <!-- Form container initially hidden -->
     <div id="formContainer">
         <div class="container my-0 d-flex flex-column justify-content-center align-items-center mb-5">
-            <h1 class="h3 my-3 col-md-10 text-center">
-                Get a Non Commercial Auto Insurance Quote by Filling the following form
-            </h1>
-
-            {% if messages %}
-                {% for message in messages %}
-                    <p {% if message.tags %} role='alert' class="alert alert-success text-center {{ message.tags }} " {% endif %} > {{ message }} </p>
-                {% endfor %}
-            {% endif %}
+            <div class="row justify-content-center ">
+                <div class=" col-md-11">
+                    <h2 class="h3 mb-3  text-center">
+                        Get a Life Insurance Quote by Filling the following form
+                    </h2>
+                </div>
+                
+                <div class=" col-md-7">
+                    {% if messages %}
+                    {% for message in messages %}
+                    <p {% if message.tags %} role='alert' class="alert alert-success text-center {{ message.tags }} " {% endif %}> {{ message }} </p>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+          
 
             <form class="form-container border border-4 border-primary shadow-lg" style="border-radius: 23px;" method="post" onsubmit = "return formvalid()">
                 {% csrf_token %}
@@ -110,7 +117,7 @@ Non Commercial Auto Insurance | DTS Insurance Services
                             <span id="dob-error" class="error-message"></span>
                         </div>
                         <div class="form-group col-md-6">
-                            <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number" minlength="10" maxlength="10" >
+                            <input type="tel" class="form-control" name="phone" id="phone" placeholder="Phone Number"  maxlength="10" >
                             <span id="phone-error" class="error-message"></span>
                         </div>
                     </div>
@@ -194,6 +201,10 @@ Non Commercial Auto Insurance | DTS Insurance Services
             document.getElementById('lname-error').textContent = "Last Name is required";
             return false;
         }
+        if (!/^[A-Za-z]+(?: [A-Za-z]+)*$/.test(lname.trim())) {
+            document.getElementById('lname-error').textContent = "Last Name should contain only alphabets";
+            return false;
+        }
         if (dob.trim() === "") {
             document.getElementById('dob-error').textContent = "Date Of Birth is Required";
             return false;
@@ -220,14 +231,14 @@ Non Commercial Auto Insurance | DTS Insurance Services
             return false;
         }
 
-        // Split the address into words
-        var addressWords = address.trim().split(/\s+/);
+        // // Split the address into words
+        // var addressWords = address.trim().split(/\s+/);
 
-        // Check if the number of words in the address is less than 10
-        if (addressWords.length < 3) {
-            document.getElementById('address-error').textContent = "Address must contain Atleast 3 words";
-            return false;
-        }
+        // // Check if the number of words in the address is less than 10
+        // if (addressWords.length < 3) {
+        //     document.getElementById('address-error').textContent = "Address must contain Atleast 3 words";
+        //     return false;
+        // }
 
         if (vnumber.trim() === "") {
             document.getElementById('vnumber-error').textContent = "Vehicle Number is required";

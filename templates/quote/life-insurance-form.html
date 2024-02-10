@@ -30,19 +30,25 @@ Life Insurance | DTS Insurance Services
 
 
 
-<div class="container my-0 d-flex flex-column  justify-content-center align-items-center mb-5" id="lifeinsuraceform">
-    <h1 class="h3 mb-3  col-md-7 text-center">
-        Get a Life Insurance Quote by Filling the following form
-    </h1>
+<div class=" my-0 mx-2 row justify-content-center    align-items-center mb-5" id="lifeinsuraceform">
+    <div class="row justify-content-center ">
+        <div class=" col-md-11">
+            <h2 class="h3 mb-3  text-center">
+                Get a Life Insurance Quote by Filling the following form
+            </h2>
+        </div>
+        
+        <div class=" col-md-7">
+            {% if messages %}
+            {% for message in messages %}
+            <p {% if message.tags %} role='alert' class="alert alert-success text-center {{ message.tags }} " {% endif %}> {{ message }} </p>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
 
-    {% if messages %}
-    {% for message in messages %}
-    <p {% if message.tags %} role='alert' class="alert alert-success text-center {{ message.tags }} " {% endif %}> {{ message }} </p>
-    {% endfor %}
-    {% endif %}
-
-    <div class="col-lg-7">
-        <form class="form-container border border-4 border-primary shadow-lg" style="border-radius: 23px;" method="post" onsubmit="return formvalid()">
+  
+        <form class="form-container mx-2 border border-4 border-primary shadow-lg" style="border-radius: 23px;" method="post" onsubmit="return formvalid()">
             {% csrf_token %}
             <div class="container d-flex flex-column p-4 my-2">
                 <div class="form-row">
@@ -75,7 +81,7 @@ Life Insurance | DTS Insurance Services
         
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <input type="text" class="form-control" name="phone" id="phone"  placeholder="Phone-number ex. 559-554-9835">
+                        <input type="text" class="form-control" name="phone" id="phone" maxlength="10"  placeholder="Phone-number ex. 559-554-9835">
                         <span id="phone-error" class="error-message"></span>
                     </div>
                     <div class="form-group col-md-6">
@@ -96,7 +102,8 @@ Life Insurance | DTS Insurance Services
             </div>
         </form>
         
-    </div>
+        
+    
 </div>
 
 
@@ -132,6 +139,11 @@ Life Insurance | DTS Insurance Services
             document.getElementById('lname-error').textContent = "Last Name is required";
             return false;
         }
+          // Validate if First Name contains symbols
+          if (!/^[A-Za-z]+(?: [A-Za-z]+)*$/.test(lname.trim())) {
+            document.getElementById('lname-error').textContent = "Last Name should contain only alphabets";
+            return false;
+        }
         if (dob.trim() === "") {
             document.getElementById('dob-error').textContent = "Date Of Birth is Required";
             return false;
@@ -162,17 +174,14 @@ Life Insurance | DTS Insurance Services
             return false;
         }
          // Split the details into words
-         var wordCount = details.trim().split(/\s+/).length;
+         var wordCount = details.trim().length;
 
          // Validate minimum word count
-         if (wordCount < 10) {
-             document.getElementById('details-error').textContent = "Details must contain at least 10 words or enter details Properly.";
+         if (wordCount < 50) {
+             document.getElementById('details-error').textContent = "At Least 50 Characters or enter details Properly.";
              return false;
          }
-       
-     
-       
-
+    
         return true; // Form submission allowed if all validations pass
     }
 </script>

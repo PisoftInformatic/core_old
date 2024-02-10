@@ -248,5 +248,7 @@ About Page
     font-weight: 600;
     font-size: 12px;
     color: red;
+    padding: 0px;
+    margin: 0px;
     /* padding-left: 2px; */
 }

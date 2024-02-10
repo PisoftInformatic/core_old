@@ -25,11 +25,11 @@ Home Insurance | DTS Insurance Services
     </p>
 </div>
 
-
-<div class="container my-5 d-flex flex-column  justify-content-center align-items-center" id="homeinsuranceform">
-    <h1 class="h3 mb-3  col-md-7 text-center">
+<div id="formContainer">
+<div class="row my-0 d-flex flex-column justify-content-center align-items-center mb-5" id="homeinsuranceform">
+    <h2 class="my-3 col-md-7 text-center">
         Get a Home Insurance Quote by Filling the following form
-    </h1>
+    </h2>
     
 
     {% if messages %}
@@ -39,7 +39,7 @@ Home Insurance | DTS Insurance Services
     {% endif %}
 
 
-    <form class="form-container border border-4 border-primary shadow-lg" style="border-radius: 23px;"
+    <form class="form-container mx-5 border border-4  border-primary shadow-lg" style="border-radius: 23px;"
     method="post" onsubmit="return formvalid()">
     {% csrf_token %}
     <div class="container d-flex flex-column p-4 my-2 ">
@@ -67,7 +67,7 @@ Home Insurance | DTS Insurance Services
                 <span id="dob-error" class="error-message"></span>
             </div>
             <div class="form-group col-md-6">
-                <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number">
+                <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number" maxlength="10">
                 <span id="phone-error" class="error-message"></span>
             </div>
         </div>
@@ -111,9 +111,9 @@ Home Insurance | DTS Insurance Services
             <!-- <button type="reset" class="btn btn-danger ">Clear</button> -->
         </div>
     </div>
-</form>
+    </form>
 
-    </div>
+</div>
 </div>
 
 
@@ -151,6 +151,11 @@ Home Insurance | DTS Insurance Services
             document.getElementById('lname-error').textContent = "Last Name is required";
             return false;
         }
+         // Validate if First Name contains symbols
+         if (!/^[A-Za-z]+(?: [A-Za-z]+)*$/.test(lname.trim())) {
+            document.getElementById('lname-error').textContent = "Last Name should contain only alphabets";
+            return false;
+        }
         if (dob.trim() === "") {
             document.getElementById('dob-error').textContent = "Date Of Birth is Required";
             return false;
@@ -177,14 +182,14 @@ Home Insurance | DTS Insurance Services
             return false;
         }
 
-        // Split the address into words
-        var addressWords = address.trim().split(/\s+/);
+        // // Split the address into words
+        // var addressWords = address.trim().split(/\s+/);
 
-        // Check if the number of words in the address is less than 10
-        if (addressWords.length < 3) {
-            document.getElementById('address-error').textContent = "Address must contain Atleast 3 words";
-            return false;
-        }
+        // // Check if the number of words in the address is less than 10
+        // if (addressWords.length < 3) {
+        //     document.getElementById('address-error').textContent = "Address must contain Atleast 3 words";
+        //     return false;
+        // }
 
         if (pincode.trim() === "") {
             document.getElementById('pincode-error').textContent = "Pin Code is required";

@@ -13,12 +13,13 @@ About | DTS Insurance Services Inc.
     .form-control{
         border-radius: 5px;
     }
+   
 </style>
 
     <!-- Contact Start -->
     <div class="container-fluid bg-white my-3">
         <div class="container">
-            <div class="row">
+            <div class="row row justify-content-between">
                 <div class="col-lg-5">
                     <div class="d-flex flex-column justify-content-center bg-primary contact-banner my-5">
                         <div class="d-inline-flex border border-light p-1 mb-4">
@@ -62,32 +63,40 @@ About | DTS Insurance Services Inc.
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-7 mb-5 my-lg-2 py-5 pl-lg-5">
+                <div class="col-lg-5 mb-5 my-lg-2 py-5 pl-lg-5">
                     {% if messages %}
                     {% for message in messages %}
                     <p  {% if message.tags %} role='alert' class="alert alert-success text-center {{ message.tags }} " {% endif %}> {{ message }} </p>
                     {% endfor %}
                     {% endif %}
                 
-                <div class=" py-5">
-                    <h2 class=" h5 mb-4 text-center col-md-10 m-auto">
-                        Let DTS Insurance Services Inc. Handle All Of Your Insurance Needs!
+                <div class=" ">
+                    <h2 class="  mb-4 text-center col-md-12 ">
+                        Let Us Contact You
                     </h2>
-                    <form  method="post">
-                        {% csrf_token%}
+                    <form method="post" class="form-container border border-4 border-primary shadow-lg pt-5" style="border-radius: 23px;" onsubmit="return formvalid()">
+                        {% csrf_token %}
                         <div class="row m-auto">
-                            <div class="col-lg-8 m-auto">
-                                <input type="text" class="form-control m-3" placeholder="Full Name" name="name" id="name" required>
-                                <input type="text" class="form-control m-3" placeholder="Phone" name="phone" id="phone" required>
-                                <input type="text" class="form-control m-3" placeholder="Email" name="email" id="emial" required>
-                                <textarea name="msg"  class="form-control m-3" id="msg" cols="40" rows="5" placeholder="Message" required></textarea>
-
+                            <div class="col-lg-10 m-auto">
+                                <input type="text" class="form-control my-2" placeholder="Full Name" name="name" id="name" >
+                                <span id="name-error" class="error-message"></span>
+                    
+                                <input type="text" class="form-control my-2" placeholder="Phone" name="phone" id="phone" >
+                                <span id="phone-error" class="error-message"></span>
+                    
+                                <input type="text" class="form-control my-2" placeholder="Email" name="email" id="email" >
+                                <span id="email-error" class="error-message"></span>
+                    
+                                <textarea name="msg" class="form-control my-2" id="msg" cols="40" rows="5" placeholder="Message" ></textarea>
+                                <span id="msg-error" class="error-message"></span>
+                    
                                 <div class="d-flex align-items-center justify-content-content p-4">
                                     <button type="submit" class="btn btn-primary m-auto">Submit Now</button>
                                 </div>
                             </div>
                         </div>
                     </form>
+                    
                 </div>
             </div>
                 </div>
@@ -97,4 +106,70 @@ About | DTS Insurance Services Inc.
     <!-- Contact End -->
 
 
+    <script>
+        function formvalid() {
+            var name = document.getElementById('name').value;
+            var phone = document.getElementById('phone').value;
+            var email = document.getElementById('email').value;
+            var msg = document.getElementById('msg').value;
+          
+            // Clear previous error messages
+            var errorMessages = document.querySelectorAll('.error-message');
+            errorMessages.forEach(function(error) {
+                error.textContent = '';
+            });
+    
+            // Validate Name
+            if (name.trim() === "") {
+                document.getElementById('name-error').textContent = "Name is required";
+                return false;
+            }
+            // Validate if Name contains symbols
+            if (!/^[A-Za-z]+(?: [A-Za-z]+)*$/.test(name.trim())) {
+                document.getElementById('name-error').textContent = "Name should contain only alphabets";
+                return false;
+            }
+    
+           
+           
+            if (phone.trim() === "") {
+                document.getElementById('phone-error').textContent = "Phone Number is Required";
+                return false;
+            }
+    
+            // Regular expression to check if the phone number consists of 10 digits only
+            var phoneRegex = /^\d{10}$/;
+    
+            if (!phoneRegex.test(phone.trim())) {
+                document.getElementById('phone-error').textContent = "Phone Number must be 10 digits and contain only numbers";
+                return false;
+            }
+    
+            if (email.trim() === "") {
+                document.getElementById('email-error').textContent = "Email Address is Required";
+                return false;
+            }
+            if (msg.trim() === "") {
+                document.getElementById('msg-error').textContent = "Message is Required";
+                return false;
+            }
+    
+    
+
+            // Split the details into words
+         var wordCount = msg.trim().length;
+
+         // Validate minimum word count
+         if (wordCount < 50) {
+             document.getElementById('msg-error').textContent = "At Least 50 Characters or enter details Properly.";
+             return false;
+         }
+
+           
+    
+            return true; // Form submission allowed if all validations pass
+        }
+    </script>
+    
+     
 {% endblock content %}
