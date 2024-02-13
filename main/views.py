@@ -40,8 +40,8 @@ company_address = [ 'DTS Insurance Services Inc.',
                 ]
 
 # Path Of the Logo of Pdf File -->
-# logo_path = '/home/pisoftweb/core/static/img/logo1.png'
 logo_path = 'E:/Kuldeep(Python)/Development/INsurance/core/static/img/logo1.png'
+# logo_path = '/root/pypro/core/static/img/logo1.png'
 
 # recipient_list = ['kuldeepsaini8865py@gmail.com', 'damandeep@dtsinsservices.com', 'Anjupisoft@gmail.com']
 recipient_list = ['kuldeepsaini8865py@gmail.com','coolboyk.deepsaini@gmail.com']
