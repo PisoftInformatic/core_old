@@ -35,13 +35,13 @@ company_address = [ 'DTS Insurance Services Inc.',
                    '3380 W Ashlan Ave',
                    'FRESNO, CA',
                    'Zip Code - 93722',
-                   'Phone : 559-554-9835'
-                   'Email : damandeep@dtsinsservices.com'
+                   'Phone : 559-554-9835',
+                   'Email : damandeep@dtsinsservices.com',
                 ]
 
 # Path Of the Logo of Pdf File -->
 logo_path = 'E:/Kuldeep(Python)/Development/INsurance/core/static/img/logo1.png'
-# logo_path = '/root/pypro/core/static/img/logo1.png'
+#logo_path = '/root/pypro/core/static/img/logo1.png'
 
 # recipient_list = ['kuldeepsaini8865py@gmail.com', 'damandeep@dtsinsservices.com', 'Anjupisoft@gmail.com']
 recipient_list = ['kuldeepsaini8865py@gmail.com','coolboyk.deepsaini@gmail.com']
@@ -799,7 +799,7 @@ def home_insurance_form(requests):
         termsconditions_line4 = Paragraph(terms4, termsconditions_style2)
 
         # Signature
-        signature_style = ParagraphStyle('Signature', parent=getSampleStyleSheet()['Title'], fontSize=12, spaceBefore=100, spaceAfter=0, alignment=2)
+        signature_style = ParagraphStyle('Signature', parent=getSampleStyleSheet()['Title'], fontSize=12, spaceBefore=70, spaceAfter=0, alignment=2)
         signature_line = Paragraph('Authorized  Signature', signature_style)
 
 
@@ -1003,7 +1003,7 @@ def life_insurance_form(requests):
         termsconditions_line4 = Paragraph(terms4, termsconditions_style2)
 
         # Signature
-        signature_style = ParagraphStyle('Signature', parent=getSampleStyleSheet()['Title'], fontSize=12, spaceBefore=170, spaceAfter=0, alignment=2)
+        signature_style = ParagraphStyle('Signature', parent=getSampleStyleSheet()['Title'], fontSize=12, spaceBefore=140, spaceAfter=0, alignment=2)
         signature_line = Paragraph('Authorized  Signature', signature_style)
 
         # Create the user information table
