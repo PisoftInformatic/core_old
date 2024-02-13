@@ -23,87 +23,92 @@ Life Insurance | DTS Insurance Services
     <!---->
     <h1 class="text-left text-wrap">Life Insurance </h1>
     <p class="para ">
-      Secure Your Legacy with DTS Life Insurance Inc. Life is unpredictable, but your legacy doesn't have to be. With DTS Life Insurance Inc., you can safeguard the financial future of your loved ones, ensuring that they're protected no matter what life throws their way. Our comprehensive plans offer peace of mind, providing a safety net that extends beyond the present moment.
+        Secure Your Legacy with DTS Life Insurance. Life is unpredictable, but your legacy doesn't have to be. With DTS
+        Life Insurance, you can safeguard the financial future of your loved ones, ensuring that they're protected no
+        matter what life throws their way. Our comprehensive plans offer peace of mind, providing a safety net that
+        extends beyond the present moment.
     </p>
- </div>
+</div>
 
 
 
 
-<div class=" my-0 mx-2 row justify-content-center    align-items-center mb-5" id="lifeinsuraceform">
+<div class=" my-0 mx-2 justify-content-center  align-items-center mb-5" id="lifeinsuraceform">
     <div class="row justify-content-center ">
-        <div class=" col-md-11">
+        <div class=" col-md-7">
             <h2 class="h3 mb-3  text-center">
                 Get a Life Insurance Quote by Filling the following form
             </h2>
-        </div>
-        
-        <div class=" col-md-7">
             {% if messages %}
             {% for message in messages %}
             <p {% if message.tags %} role='alert' class="alert alert-success text-center {{ message.tags }} " {% endif %}> {{ message }} </p>
             {% endfor %}
             {% endif %}
         </div>
+
+        <div class=" col-md-7">
+            <form class="form-container mx-2 border border-4 border-primary shadow-lg" style="border-radius: 23px;"
+                method="post" onsubmit="return formvalid()">
+                {% csrf_token %}
+                <div class="container d-flex flex-column p-4 my-2">
+                    <div class="form-row">
+                        <div class="col-lg-12 text-center mb-4">
+                            <h3>Fill Up this Form</h3>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name">
+                            <span id="fname-error" class="error-message"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name">
+                            <span id="lname-error" class="error-message"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <input placeholder="DOB mm/dd/yyyy" name="dob" id="dob" class="textbox-n form-control"
+                                th:field="*{category}" type="text" onfocus="(this.type='date')"
+                                onblur="(this.type='text')" id="date" />
+                            <span id="dob-error" class="error-message"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <select class="col-md-12 form-control" style="border: 1px solid rgb(149, 138, 223);"
+                                name="gender" id="gender">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                            <span class="error-message" id="gender-error">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <input type="text" class="form-control" name="phone" id="phone" maxlength="10"
+                                placeholder="Phone-number ex. 559-554-9835">
+                            <span id="phone-error" class="error-message"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Email id">
+                            <span id="email-error" class="error-message"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <textarea name="details" id="details" placeholder="Details" class="form-control border-b"
+                                rows="5"></textarea>
+                            <span id="details-error" class="error-message"></span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center justify-content-center">
+                        <button type="submit" class="btn btn-primary m-2">Submit Now</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 
-  
-        <form class="form-container mx-2 border border-4 border-primary shadow-lg" style="border-radius: 23px;" method="post" onsubmit="return formvalid()">
-            {% csrf_token %}
-            <div class="container d-flex flex-column p-4 my-2">
-                <div class="form-row">
-                    <div class="col-lg-12 text-center mb-4">
-                        <h3>Fill Up this Form</h3>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" >
-                        <span id="fname-error" class="error-message"></span>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name" >
-                        <span id="lname-error" class="error-message"></span>
-                    </div>
-                </div>
-        
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <input placeholder="DOB mm/dd/yyyy"  name="dob" id="dob" class="textbox-n form-control" th:field="*{category}" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" />
-                        <span id="dob-error" class="error-message"></span>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <select class="col-md-12 form-control"  style="border: 1px solid rgb(149, 138, 223);" name="gender" id="gender">
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                        </select>
-                        <span class="error-message" id="gender-error">
-                    </div>
-                </div>
-        
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <input type="text" class="form-control" name="phone" id="phone" maxlength="10"  placeholder="Phone-number ex. 559-554-9835">
-                        <span id="phone-error" class="error-message"></span>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <input type="text" class="form-control" id="email" name="email" placeholder="Email id" >
-                        <span id="email-error" class="error-message"></span>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        <textarea name="details" id="details" placeholder="Details" class="form-control border-b" rows="5"></textarea>
-                        <span id="details-error" class="error-message"></span>
-                    </div>
-                </div>
-        
-                <div class="d-flex align-items-center justify-content-center">
-                    <button type="submit" class="btn btn-primary m-2">Submit Now</button>
-                </div>
-            </div>
-        </form>
-        
-        
-    
 </div>
 
 
@@ -116,11 +121,11 @@ Life Insurance | DTS Insurance Services
         var email = document.getElementById('email').value;
         var gender = document.getElementById('gender').value;
         var details = document.getElementById('details').value;
-       
+
 
         // Clear previous error messages
         var errorMessages = document.querySelectorAll('.error-message');
-        errorMessages.forEach(function(error) {
+        errorMessages.forEach(function (error) {
             error.textContent = '';
         });
 
@@ -139,8 +144,8 @@ Life Insurance | DTS Insurance Services
             document.getElementById('lname-error').textContent = "Last Name is required";
             return false;
         }
-          // Validate if First Name contains symbols
-          if (!/^[A-Za-z]+(?: [A-Za-z]+)*$/.test(lname.trim())) {
+        // Validate if First Name contains symbols
+        if (!/^[A-Za-z]+(?: [A-Za-z]+)*$/.test(lname.trim())) {
             document.getElementById('lname-error').textContent = "Last Name should contain only alphabets";
             return false;
         }
@@ -173,17 +178,17 @@ Life Insurance | DTS Insurance Services
             document.getElementById('details-error').textContent = "Please Provide some details....";
             return false;
         }
-         // Split the details into words
-         var wordCount = details.trim().length;
+        // Split the details into words
+        var wordCount = details.trim().length;
 
-         // Validate minimum word count
-         if (wordCount < 50) {
-             document.getElementById('details-error').textContent = "At Least 50 Characters or enter details Properly.";
-             return false;
-         }
-    
+        // Validate minimum word count
+        if (wordCount < 50) {
+            document.getElementById('details-error').textContent = "At Least 50 Characters or enter details Properly.";
+            return false;
+        }
+
         return true; // Form submission allowed if all validations pass
     }
 </script>
- 
+
 {% endblock content %}
